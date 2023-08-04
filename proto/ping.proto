@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package ping;
+
+service Ping {
+    // Sends a greeting
+    rpc Ping (PingReq) returns (PingRsp) {}
+}
+
+message PingReq {
+    string name = 1;
+}
+
+// The response message containing the greetings
+message PingRsp {
+    string message = 1;
+}
