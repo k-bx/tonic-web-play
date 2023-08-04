@@ -12,7 +12,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let body = hyper::Body::from(encode_body(msg.clone()));
     println!("BODY={:?}", body);
-    
+    let body_enc = encode_body(msg.clone());
+    // save body_enc in deploy/body.bin
+    std::fs::write("deploy/body.bin", body_enc).unwrap();
+
     // a good old http/1.1 request
     let request = http::Request::builder()
         .version(http::Version::HTTP_11)
